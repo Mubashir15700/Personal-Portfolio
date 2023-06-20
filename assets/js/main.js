@@ -36,13 +36,6 @@ function scrollActive(){
     })
 }
 
-function webdesign() {
-    const design =document.getElementById('Popup')
-    design.classList.toggle('Popup')
-    const blur = document.getElementById('sec')
-    blur.classList.toggle('blur')
-}
-
 window.addEventListener('scroll', scrollActive)
 
 sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{}); 

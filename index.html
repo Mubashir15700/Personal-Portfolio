@@ -44,8 +44,10 @@
                 <a href="#contact" class="button">Contact</a>
             </div>
             <div class="home__social">
-                <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
-                <a href="https://www.facebook.com/profile.php?id=100057343863361" class="home__social-icon"><i class='bx bxl-facebook'></i></a>
+                <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile"
+                    class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100057343863361" class="home__social-icon"><i
+                        class='bx bxl-facebook'></i></a>
                 <a href="https://github.com/Mubashir15700" class="home__social-icon"><i class='bx bxl-github'></i></a>
             </div>
             <div class="home__img">
@@ -73,7 +75,7 @@
                 </div>
                 <div>
                     <h2 class="about__subtitle">I'm Mubashir</h2>
-                    <p class="about__text">Web developer, with extensive knowledge and three years of experience, working in web
+                    <p class="about__text">Web developer, with extensive knowledge, working in web
                         technologies and Ui / Ux design, delivering quality work.</p>
                 </div>
             </div>
@@ -183,9 +185,10 @@
             <h2 class="section-title">Contact</h2>
             <div class="contact__container bd-grid">
                 <form id="submit-form" action="" class="contact__form">
-                    <input type="text" name="name" placeholder="Name" class="contact__input">
-                    <input type="mail" name="email" placeholder="Email" class="contact__input">
-                    <textarea name="textarea" id="" cols="0" rows="10" class="contact__input" placeholder="Your message"></textarea>
+                    <input type="text" name="name" placeholder="Name" class="contact__input contact__name">
+                    <input type="mail" name="email" placeholder="Email" class="contact__input contact__mail">
+                    <textarea name="textarea" id="" cols="0" rows="10" class="contact__input contact__message"
+                        placeholder="Your message"></textarea>
                     <input type="submit" value="Submit" class="contact__button button">
                 </form>
             </div>
@@ -196,35 +199,52 @@
     <footer class="footer">
         <p class="footer__title">Mubashir</p>
         <div class="footer__social">
-            <a href="https://www.facebook.com/profile.php?id=100057343863361" class="footer__icon"><i class='bx bxl-facebook'></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100057343863361" class="footer__icon"><i
+                    class='bx bxl-facebook'></i></a>
             <a href="https://github.com/Mubashir15700" class="footer__icon"><i class='bx bxl-github'></i></a>
-            <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile" class="footer__icon"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile"
+                class="footer__icon"><i class='bx bxl-linkedin'></i></a>
         </div>
         <p class="footer__copy">Mubashir © Copyright 2023. Design by Me</p>
     </footer>
 
     <script>
-        $("#submit-form").submit((e) => {
-            e.preventDefault()
-            $.ajax({
-                url: "https://script.google.com/macros/s/AKfycbyIftpIrEJ8U0h861SL37VUmfK852neS2LEQY1P3hVdiT5tjr6VcZgr6hsPcWSKUeuR_Q/exec",
-                data: $("#submit-form").serialize(),
-                method: "post",
-                success: function (response) {
-                    alert("Form submitted successfully")
-                    window.location.reload()
-                    //window.location.href="https://google.com"
-                },
-                error: function (err) {
-                    alert("Something Error")
 
+        /*==================== FORM VALIDATION ====================*/
+
+        $("#submit-form").submit((e) => {
+            e.preventDefault();
+            let name = document.querySelector('.contact__name').value;
+            let mail = document.querySelector('.contact__mail').value;
+            let message = document.querySelector('.contact__message').value;
+            if (name && mail && message) {
+                if (mail.includes("@" && ".com")) {
+                    $.ajax({
+                        url: "https://script.google.com/macros/s/AKfycbyIftpIrEJ8U0h861SL37VUmfK852neS2LEQY1P3hVdiT5tjr6VcZgr6hsPcWSKUeuR_Q/exec",
+                        data: $("#submit-form").serialize(),
+                        method: "post",
+                        success: function (response) {
+                            alert("Form submitted successfully");
+                            window.location.reload();
+                            //window.location.href="https://google.com"
+                        },
+                        error: function (err) {
+                            alert("Something Error");
+                        }
+                    });
+                } else {
+                    alert("Please enter a valid email");
                 }
-            })
-        })
+            } else {
+                alert("All fields are required!");
+            }
+        });
+
     </script>
 
     <!--===== MAIN JS =====-->
     <script src="assets/js/main.js"></script>
+    
 </body>
 
 </html>
