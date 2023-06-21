@@ -41,15 +41,21 @@
         <!--===== HOME =====-->
         <section class="home bd-grid" id="home">
             <div class="home__data">
-                <h1 class="home__title">Hi,<br>I'm <span class="home__title-color">Mubashir</span><br>Web Designer</h1>
+                <h1 class="home__title">
+                    Hi,<br>I'm <span class="home__title-color">Mubashir</span><br>Web Designer
+                </h1>
                 <a href="#contact" class="button" name="contact">Contact</a>
             </div>
             <div class="home__social">
                 <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile"
-                    class="home__social-icon" name="linkedin"><i class="bi bi-linkedin"></i></a>
-                <a href="https://www.facebook.com/profile.php?id=100057343863361" class="home__social-icon"  name="facebook">
-                    <i class='bx bxl-facebook'></i></a>
-                <a href="https://github.com/Mubashir15700" class="home__social-icon" name="github">
+                    class="home__social-icon" name="linkedin" target="_blank">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100057343863361" class="home__social-icon"
+                    name="facebook" target="_blank">
+                    <i class='bx bxl-facebook'></i>
+                </a>
+                <a href="https://github.com/Mubashir15700" class="home__social-icon" name="github" target="_blank">
                     <i class="bi bi-github"></i>
                 </a>
             </div>
@@ -78,8 +84,10 @@
                 </div>
                 <div>
                     <h2 class="about__subtitle">I'm Mubashir</h2>
-                    <p class="about__text">Web developer, with extensive knowledge, working in web
-                        technologies and Ui / Ux design, delivering quality work.</p>
+                    <p class="about__text">
+                        Web developer, with extensive knowledge, working in web
+                        technologies and Ui / Ux design, delivering quality work.
+                    yy</p>
                 </div>
             </div>
         </section>
@@ -203,14 +211,15 @@
     <footer class="footer">
         <p class="footer__title">Mubashir</p>
         <div class="footer__social">
-            <a href="https://www.facebook.com/profile.php?id=100057343863361" class="footer__icon" name="facebook">
+            <a href="https://www.facebook.com/profile.php?id=100057343863361" class="footer__icon" name="facebook"
+                target="_blank">
                 <i class="bi bi-facebook"></i>
             </a>
-            <a href="https://github.com/Mubashir15700" class="footer__icon" name="github">
+            <a href="https://github.com/Mubashir15700" class="footer__icon" name="github" target="_blank">
                 <i class="bi bi-github"></i>
             </a>
             <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile"
-                class="footer__icon" name="linkedin">
+                class="footer__icon" name="linkedin" target="_blank">
                 <i class="bi bi-linkedin"></i>
             </a>
         </div>
@@ -226,23 +235,30 @@
             let name = document.querySelector('.contact__name').value;
             let mail = document.querySelector('.contact__mail').value;
             let message = document.querySelector('.contact__message').value;
+            const patternName = /[\w\s\][,][0-9]/gi;
             if (name && mail) {
-                if (mail.includes("@" && ".")) {
-                    $.ajax({
-                        url: "https://script.google.com/macros/s/AKfycbyIftpIrEJ8U0h861SL37VUmfK852neS2LEQY1P3hVdiT5tjr6VcZgr6hsPcWSKUeuR_Q/exec",
-                        data: $("#submit-form").serialize(),
-                        method: "post",
-                        success: function (response) {
-                            alert("Form submitted successfully");
-                            window.location.reload();
-                            //window.location.href="https://google.com"
-                        },
-                        error: function (err) {
-                            alert("Something Error");
-                        }
-                    });
+                if(name.length <= 3) {
+                    document.querySelector("#err-msg").innerHTML = "⚠️ Name must contain morethan 3 characters.";
+                } else if(patternName.test(name)) {
+                    document.querySelector("#err-msg").innerHTML = "⚠️ Name should not contain numbers.";
                 } else {
-                    document.querySelector("#err-msg").innerHTML = "⚠️ Please enter a valid email!";
+                    if (mail.includes("@" && ".")) {
+                        $.ajax({
+                            url: "https://script.google.com/macros/s/AKfycbyIftpIrEJ8U0h861SL37VUmfK852neS2LEQY1P3hVdiT5tjr6VcZgr6hsPcWSKUeuR_Q/exec",
+                            data: $("#submit-form").serialize(),
+                            method: "post",
+                            success: function (response) {
+                                alert("Form submitted successfully");
+                                window.location.reload();
+                                //window.location.href="https://google.com"
+                            },
+                            error: function (err) {
+                                alert("Something Error");
+                            }   
+                        });
+                    } else {
+                        document.querySelector("#err-msg").innerHTML = "⚠️ Please enter a valid email!";
+                    }
                 }
             } else {
                 document.querySelector("#err-msg").innerHTML = "⚠️ Name and Email are required!";
@@ -253,7 +269,7 @@
 
     <!--===== MAIN JS =====-->
     <script src="assets/js/main.js"></script>
-    
+
 </body>
 
 </html>
