@@ -317,7 +317,7 @@ img {
 }
 
 .skills__html {
-  width: 95%;
+  width: 93%;
 }
 
 .skills__css {
@@ -325,11 +325,11 @@ img {
 }
 
 .skills__js {
-  width: 65%;
+  width: 78%;
 }
 
 .skills__ux {
-  width: 85%;
+  width: 82%;
 }
 
 .skills__img {
@@ -361,6 +361,14 @@ img {
   transform: scale(1.1);
 }
 
+
+@media screen and (min-width: 500px) {
+  .services__container {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
 /* ===== CONTACT =====*/
 .contact__input {
   width: 100%;
@@ -380,6 +388,11 @@ img {
   font-size: var(--normal-font-size);
   cursor: pointer;
   margin-left: auto;
+}
+
+.err-btn p {
+  margin-bottom: 20px;
+  color: red;
 }
 
 /* ===== FOOTER =====*/
