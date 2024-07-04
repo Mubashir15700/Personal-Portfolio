@@ -265,6 +265,19 @@ img {
   border-radius: .5rem;
 }
 
+.experience {
+  margin-top: 10px;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-list li {
+  margin: 10px 0;
+}
+
 /* ===== SKILLS =====*/
 .skills__container {
   row-gap: 2rem;
@@ -501,6 +514,11 @@ img {
 
   .about__img img {
     width: 300px;
+  }
+
+  .experience-list {
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .skills__container {
