@@ -353,6 +353,41 @@ img {
   border-radius: .5rem;
 }
 
+/* ===== EXPERIENCE =====*/
+.experience-section {
+  margin: 50px 0;
+  padding: 70px 210px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.experience-header {
+  margin-bottom: 10px;
+}
+
+.company {
+  font-size: 14px;
+  color: #777;
+}
+
+.experience-card {
+  margin-bottom: 20px;
+}
+
+.duration {
+  color: #777;
+}
+
+.responsibilities li {
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+  .experience-section {
+    padding: 70px 20px;
+  }
+}
+
 /* ===== WORK =====*/
 .work__container {
   display: grid;
@@ -471,6 +506,10 @@ img {
 @media screen and (min-width: 768px) {
   body {
     margin: 0;
+  }
+
+  .home__title {
+    margin-top: 40px;
   }
 
   .section {
