@@ -378,12 +378,29 @@ img {
   color: #777;
 }
 
-.responsibilities li {
+.responsibilities li,
+.achievements-list li {
   margin-bottom: 10px;
 }
 
 @media screen and (max-width: 1000px) {
   .experience-section {
+    padding: 70px 20px;
+  }
+}
+
+/* ===== ACHIEVEMENTS =====*/
+.achievements-section {
+  margin: 50px 0;
+  padding: 70px 210px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 1000px) {
+  .achievements-section {
     padding: 70px 20px;
   }
 }
