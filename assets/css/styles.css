@@ -1,26 +1,35 @@
 /*===== GOOGLE FONTS =====*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 /*===== VARIABLES CSS =====*/
 :root {
-  --header-height: 3rem;
+  --header-height: 3.5rem;
+  --font-medium: 500;
   --font-semi: 600;
+
+  /* Color Palette (Refined HSL) */
   --hue-color: 224;
   --first-color: hsl(var(--hue-color), 89%, 60%);
-  --second-color: hsl(var(--hue-color), 56%, 12%);
-  /*===== Fuente y tipografia =====*/
+  --first-color-alt: hsl(var(--hue-color), 89%, 55%);
+  --second-color: hsl(var(--hue-color), 40%, 15%);
+  --text-color: hsl(var(--hue-color), 15%, 35%);
+  --body-color: hsl(var(--hue-color), 60%, 99%);
+  --container-color: #ffffff;
+
+  /* Typography Scale */
   --body-font: 'Poppins', sans-serif;
-  --big-font-size: 2rem;
-  --h2-font-size: 1.25rem;
+  --big-font-size: 2.25rem;
+  --h2-font-size: 1.5rem;
   --normal-font-size: .938rem;
   --smaller-font-size: .75rem;
-  /*===== Margenes =====*/
+
+  /* Spacing */
+  --mb-1: 0.5rem;
   --mb-2: 1rem;
   --mb-4: 2rem;
   --mb-5: 2.5rem;
-  --mb-6: 3rem;
-  /*===== z index =====*/
-  --z-back: -10;
+
+  /* Z-Index */
   --z-fixed: 100;
 }
 
@@ -29,6 +38,8 @@
 ::before,
 ::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -36,26 +47,28 @@ html {
 }
 
 body {
-  margin: var(--header-height) 0 0 0;
+  margin-top: var(--header-height);
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
-  color: var(--second-color);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
 h1,
 h2,
-p {
-  margin: 0;
+h3 {
+  color: var(--second-color);
+  font-weight: var(--font-semi);
 }
 
 ul {
-  margin: 0;
-  padding: 0;
   list-style: none;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 img {
@@ -64,120 +77,166 @@ img {
   display: block;
 }
 
-/*===== CLASS CSS ===== */
+/*===== LAYOUT GLOBAL =====*/
+.bd-grid {
+  max-width: 1024px;
+  display: grid;
+  margin-inline: 1.5rem;
+  /* Better handling of side spacing */
+}
+
+@media screen and (min-width: 1040px) {
+  .bd-grid {
+    margin-inline: auto;
+    /* Centers layout on huge screens */
+  }
+}
+
+.section {
+  padding: 4rem 0 3rem;
+}
+
 .section-title {
   position: relative;
   font-size: var(--h2-font-size);
   color: var(--first-color);
-  margin-top: var(--mb-2);
-  margin-bottom: var(--mb-4);
+  margin-bottom: var(--mb-5);
   text-align: center;
 }
 
+/* Sleek modern line under section titles */
 .section-title::after {
-  position: absolute;
   content: '';
-  width: 64px;
-  height: 0.18rem;
-  left: 0;
-  right: 0;
-  margin: auto;
-  top: 2rem;
+  position: absolute;
+  width: 48px;
+  height: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -0.5rem;
   background-color: var(--first-color);
+  border-radius: 2px;
 }
 
-.section {
-  padding-top: 3rem;
-  padding-bottom: 2rem;
-}
-
-/*===== LAYOUT =====*/
-.bd-grid {
-  max-width: 1024px;
-  display: grid;
-  margin-left: var(--mb-2);
-  margin-right: var(--mb-2);
-}
-
+/*===== HEADER & NAV =====*/
 .l-header {
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
-  background-color: #fff;
-  box-shadow: 0 1px 4px rgba(146, 161, 176, 0.15);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  /* Smooth modern glass effect */
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+  transition: 0.3s;
 }
 
-/*===== NAV =====*/
 .nav {
   height: var(--header-height);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: var(--font-semi);
 }
 
+.nav__logo {
+  color: var(--second-color);
+  font-weight: var(--font-semi);
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.nav__logo span {
+  color: var(--first-color);
+}
+
+.nav__toggle {
+  color: var(--second-color);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* Navigation for Mobile Devices */
 @media screen and (max-width: 767px) {
   .nav__menu {
     position: fixed;
     top: var(--header-height);
     right: -100%;
-    width: 80%;
-    height: 100%;
-    padding: 2rem;
-    background-color: var(--second-color);
-    transition: .5s;
+    width: 75%;
+    height: calc(100vh - var(--header-height));
+    padding: 3rem 2rem;
+    background-color: var(--container-color);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.05);
+    transition: 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+  }
+
+  .nav__item {
+    margin-bottom: 2.5rem;
+  }
+
+  .nav__link {
+    color: var(--second-color);
+    font-size: 1.1rem;
+    font-weight: var(--font-medium);
   }
 }
 
-.nav__item {
-  margin-bottom: var(--mb-4);
+/* Reveal Mobile Menu via JS class */
+.show {
+  right: 0 !important;
 }
 
+/* Interactive Hover Underline effect */
 .nav__link {
   position: relative;
-  color: #fff;
+  padding: 0.4rem 0;
+  transition: 0.3s;
 }
 
-.nav__link:hover {
-  position: relative;
-}
-
-.nav__link:hover::after {
-  position: absolute;
+.nav__link::after {
   content: '';
-  width: 100%;
-  height: 0.18rem;
-  left: 0;
-  top: 2rem;
-  background-color: var(--first-color);
-}
-
-.nav__logo {
-  color: var(--second-color);
-}
-
-.nav__toggle {
-  color: var(--second-color);
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/*Active menu*/
-.active::after {
   position: absolute;
-  content: '';
   width: 100%;
-  height: 0.18rem;
+  height: 2px;
+  bottom: 0;
   left: 0;
-  top: 2rem;
   background-color: var(--first-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
 }
 
-/*=== Show menu ===*/
-.show {
-  right: 0;
+.nav__link:hover::after,
+.nav__link.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav__link:hover,
+.nav__link.active {
+  color: var(--first-color);
+}
+
+/* Navigation for Desktop Screens */
+@media screen and (min-width: 768px) {
+  .nav__toggle {
+    display: none;
+    /* Hide hamburger menu on desktop */
+  }
+
+  .nav__list {
+    display: flex;
+    column-gap: 2rem;
+  }
+
+  .nav__item {
+    margin-bottom: 0;
+  }
+
+  .nav__link {
+    color: var(--second-color);
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+  }
 }
 
 /*===== HOME =====*/
@@ -440,30 +499,100 @@ img {
   transform: scale(1.1);
 }
 
-/* ===== CONTACT =====*/
-.contact__input {
+/*===== CONTACT SECTION =====*/
+.contact__container {
+  text-align: center;
+  justify-content: center;
+}
+
+.contact__subtitle {
+  max-width: 600px;
+  margin: 0 auto var(--mb-5);
+  font-size: var(--normal-font-size);
+  color: var(--text-color);
+}
+
+/* Base Link Grid (Mobile First) */
+.contact__links {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
   width: 100%;
-  font-size: var(--normal-font-size);
+}
+
+/* Premium Card Design */
+.contact__card {
+  background-color: var(--container-color, #ffffff);
+  border: 1px solid rgba(var(--hue-color), 15%, 90%, 0.4);
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Smooth Interactive Floating State */
+.contact__card:hover {
+  transform: translateY(-5px);
+  background-color: #ffffff;
+  border-color: var(--first-color);
+  box-shadow: 0 12px 30px rgba(var(--hue-color), 89%, 60%, 0.08);
+}
+
+/* Colored Icon circle backgrounds */
+.contact__icon-wrapper {
+  font-size: 2rem;
+  color: var(--first-color);
+  background-color: hsl(var(--hue-color), 89%, 96%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--mb-1);
+  transition: 0.3s;
+}
+
+.contact__card:hover .contact__icon-wrapper {
+  background-color: var(--first-color);
+  color: #ffffff;
+}
+
+.contact__card-title {
   font-weight: var(--font-semi);
-  padding: 1rem;
-  border-radius: .5rem;
-  border: 1.5px solid var(--second-color);
-  outline: none;
-  margin-bottom: var(--mb-4);
+  color: var(--second-color);
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
 }
 
-.contact__button {
-  display: block;
-  border: none;
-  outline: none;
-  font-size: var(--normal-font-size);
-  cursor: pointer;
-  margin-left: auto;
+.contact__card-user {
+  font-size: var(--smaller-font-size);
+  color: var(--text-color);
 }
 
-.err-btn p {
-  margin-bottom: 20px;
-  color: rgb(255, 0, 0);
+/* ==========================================================
+   RESPONSIVE LAYOUT ADJUSTMENTS
+   ========================================================== */
+
+/* Medium Devices (Tablets) */
+@media screen and (min-width: 576px) {
+  .contact__links {
+    grid-template-columns: repeat(2, 1fr);
+    /* 2x2 grid */
+  }
+}
+
+/* Large Devices (Desktops) */
+@media screen and (min-width: 768px) {
+  .contact__links {
+    grid-template-columns: repeat(4, 1fr);
+    /* Sleek 4-column inline row */
+    gap: 2rem;
+  }
 }
 
 /* ===== FOOTER =====*/

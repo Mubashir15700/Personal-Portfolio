@@ -12,14 +12,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Include EmailJS library -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function () {
-            // https://dashboard.emailjs.com/admin/account
-            emailjs.init({
-                publicKey: "YGa7ovrSpR6SsSndP",
-            });
-        })();
-    </script>
     <title>Mubashir - MERN Stack Developer</title>
 </head>
 
@@ -347,19 +339,49 @@
 
         <!--===== CONTACT =====-->
         <section class="contact section" id="contact">
-            <h2 class="section-title">Contact</h2>
+            <h2 class="section-title">Connect With Me</h2>
+
             <div class="contact__container bd-grid">
-                <form id="submit-form" action="" class="contact__form">
-                    <input type="text" name="from_name" placeholder="Name" class="contact__input contact__name">
-                    <input type="mail" name="from_email" placeholder="Email" class="contact__input contact__mail">
-                    <textarea name="message" cols="0" rows="8" class="contact__input contact__message"
-                        placeholder="Your message(optional)">
-                    </textarea>
-                    <div class="err-btn">
-                        <p id="err-msg"></p>
-                        <input type="submit" value="Submit" class="contact__button button">
-                    </div>
-                </form>
+                <p class="contact__subtitle">Feel free to reach out through any of these channels. I'm always open to
+                    discussing new projects, creative ideas, or opportunities.</p>
+
+                <div class="contact__links">
+                    <!-- Email Card -->
+                    <a href="mailto:mubashir15700@gmail.com" class="contact__card">
+                        <div class="contact__icon-wrapper">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+                        <span class="contact__card-title">Email</span>
+                        <span class="contact__card-user">mubashir15700@gmail.com</span>
+                    </a>
+
+                    <!-- LinkedIn Card -->
+                    <a href="https://www.linkedin.com/in/mubashir-m-142811231/" target="_blank" class="contact__card">
+                        <div class="contact__icon-wrapper">
+                            <i class="bi bi-linkedin"></i>
+                        </div>
+                        <span class="contact__card-title">LinkedIn</span>
+                        <span class="contact__card-user">mubashir-m</span>
+                    </a>
+
+                    <!-- GitHub Card -->
+                    <a href="https://github.com/Mubashir15700" target="_blank" class="contact__card">
+                        <div class="contact__icon-wrapper">
+                            <i class="bi bi-github"></i>
+                        </div>
+                        <span class="contact__card-title">GitHub</span>
+                        <span class="contact__card-user">Mubashir15700</span>
+                    </a>
+
+                    <!-- Instagram Card -->
+                    <a href="https://www.instagram.com/sebi_mubashir/" target="_blank" class="contact__card">
+                        <div class="contact__icon-wrapper">
+                            <i class="bi bi-instagram"></i>
+                        </div>
+                        <span class="contact__card-title">Instagram</span>
+                        <span class="contact__card-user">@sebi_mubashir</span>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
@@ -379,14 +401,11 @@
                 <i class="bi bi-instagram"></i>
             </a>
         </div>
-        <p class="footer__copy">Mubashir © Copyright 2023. Design by Me</p>
+        <p class="footer__copy">Mubashir © Copyright 2026. Design by Me</p>
     </footer>
 
     <!--===== MAIN JS =====-->
     <script src="assets/js/main.js"></script>
-
-    <!--===== FORM JS =====-->
-    <script src="assets/js/form.js"></script>
 
 </body>
 
