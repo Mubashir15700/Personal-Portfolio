@@ -598,6 +598,7 @@ img {
 /* ===== FOOTER =====*/
 .footer {
   background-color: var(--second-color);
+  /* background-color: var(--first-color); */
   color: #fff;
   text-align: center;
   font-weight: var(--font-semi);
@@ -664,7 +665,7 @@ img {
   }
 
   .section-title {
-    margin-bottom: var(--mb-6);
+    margin-bottom: 30px;
   }
 
   .section-title::after {
